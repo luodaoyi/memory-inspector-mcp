@@ -41,7 +41,7 @@ void PrintBanner() {
     std::printf("  inspector (generic memory / CE-style debug)\n");
     std::printf("  pid         = %lu\n", static_cast<unsigned long>(::GetCurrentProcessId()));
     std::printf("  host module = %p\n", static_cast<void*>(module));
-    std::printf("  wire port   = 127.0.0.1:37651\n");
+    std::printf("  wire port   = 0.0.0.0:37651\n");
     std::printf("================================================================\n");
     std::fflush(stdout);
 }

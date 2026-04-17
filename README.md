@@ -1,8 +1,9 @@
 # inspector
 
 注入到任意 64 位 Windows 进程的通用运行时调试工具。DLL 在目标进程内启动一个
-loopback TCP 服务（`127.0.0.1:37651`），通过一个 tab-separated line 协议对外
-暴露 Cheat Engine 风格的调试能力；MCP 桥则把这些能力转成 50 个 Claude tools。
+TCP 服务（绑定 `0.0.0.0:37651`，同机或远端均可连），通过一个 tab-separated line
+协议对外暴露 Cheat Engine 风格的调试能力；MCP 桥则把这些能力转成 50 个
+Claude tools。
 
 ---
 
@@ -77,7 +78,7 @@ cmake --build . --parallel
 1. 把 `inspector.dll` 注入目标进程（手动注入器 / DLL injector / LoadLibrary 均可）。
 2. `DllMain` → `DLL_PROCESS_ATTACH` 会：
    - 调 `AllocConsole()` 拉一个控制台窗口用于日志；
-   - 绑定 `127.0.0.1:37651` + 启动 accept 线程；
+   - 绑定 `0.0.0.0:37651` + 启动 accept 线程；
    - 启动 20 Hz 的 watcher 轮询线程。
 3. 控制台里看到：
 
@@ -85,7 +86,7 @@ cmake --build . --parallel
    inspector (generic memory / CE-style debug)
    pid         = ...
    host module = 0x00007FF7...
-   wire port   = 127.0.0.1:37651
+   wire port   = 0.0.0.0:37651
    [inspector] server started
    ```
 
