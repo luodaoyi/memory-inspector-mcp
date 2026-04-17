@@ -4,7 +4,7 @@
 #define NOMINMAX
 #endif
 
-#include <Windows.h>
+#include <windows.h>
 
 #include <atomic>
 

@@ -7,7 +7,7 @@
 #define WIN32_LEAN_AND_MEAN
 #endif
 
-#include <Windows.h>
+#include <windows.h>
 #include <tlhelp32.h>
 
 #include <sstream>
